@@ -12,4 +12,5 @@ py-self: _py-super: {
 
   # -- Packages --
   biotite = py-self.callPackage (byNamePackage "biotite") { };
+  fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
 }
