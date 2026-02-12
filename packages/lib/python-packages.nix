@@ -14,4 +14,5 @@ py-self: _py-super: {
   ankh = py-self.callPackage (byNamePackage "ankh") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
+  fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
 }
