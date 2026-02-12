@@ -7,5 +7,6 @@
 {
   edirect = pkgs.callPackage (byNamePackage "edirect") { };
   foldseek = pkgs.callPackage (byNamePackage "foldseek") { };
+  ncbi-dataformat = pkgs.callPackage (byNamePackage "ncbi-dataformat") { };
   ncbi-datasets = pkgs.callPackage (byNamePackage "ncbi-datasets") { };
 }
