@@ -3,6 +3,10 @@
 { lib, ... }:
 let
   byNamePackage = import ../packages/lib/by-name.nix;
+  helpers = [
+    "mkNvidiaWheel"
+    "mkWheelPackage"
+  ];
 in
 {
   flake.overlays.default =
@@ -15,6 +19,11 @@ in
       packagesOverlay = import ../packages/lib/python-packages.nix {
         inherit byNamePackage mkNvidiaWheel mkWheelPackage;
       };
+
+      # Auto-derive Python package names from overlay (lazy: values not evaluated)
+      pythonPackageNames = builtins.filter (n: !builtins.elem n helpers) (
+        builtins.attrNames (packagesOverlay (throw "unused") { })
+      );
 
       # Layer 2: framework overlays
       torchLatestOverlay = import ../frameworks/torch-latest.nix { inherit byNamePackage; };
@@ -33,10 +42,7 @@ in
         inherit byNamePackage;
         pkgs = final;
       };
-    in
-    regularPackages
-    // {
-      # Package sets exposed as top-level attributes
+
       pythonSets = {
         base = mkSet "base" [ packagesOverlay ];
         torch-latest = mkSet "torch-latest" [
@@ -48,6 +54,13 @@ in
           jax034CudaOverlay
         ];
       };
+    in
+    regularPackages
+    // {
+      inherit pythonSets;
+
+      # Flat package collection for flake packages/checks output
+      _stacksPackages = regularPackages // lib.getAttrs pythonPackageNames pythonSets.base.pkgs;
 
       # CUDA environment helper
       mkCudaEnv = final.callPackage ../packages/lib/mk-cuda-env.nix { };
