@@ -1,6 +1,11 @@
 {
   description = "stacks.nix — Nix package registry for ML, bioinformatics, and scientific computing";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.mulatta.io" ];
+    extra-trusted-public-keys = [ "cache.mulatta.io-1:DrV+Oy2azNyVKM7ihhD1QoOetRUnW+1G6RWToUpSO4U=" ];
+  };
+
   inputs = {
     # keep-sorted start
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
