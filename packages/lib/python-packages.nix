@@ -16,5 +16,6 @@ py-self: _py-super: {
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
+  patchright = py-self.callPackage (byNamePackage "patchright") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
 }
