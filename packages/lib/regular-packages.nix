@@ -5,5 +5,6 @@
   pkgs,
 }:
 {
+  edirect = pkgs.callPackage (byNamePackage "edirect") { };
   foldseek = pkgs.callPackage (byNamePackage "foldseek") { };
 }
