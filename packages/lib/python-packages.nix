@@ -11,6 +11,7 @@ py-self: _py-super: {
   inherit mkNvidiaWheel mkWheelPackage;
 
   # -- Packages --
+  ankh = py-self.callPackage (byNamePackage "ankh") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
 }
