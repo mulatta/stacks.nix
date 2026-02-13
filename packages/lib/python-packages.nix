@@ -48,6 +48,7 @@ py-self: _py-super: {
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
   ldp = py-self.callPackage (byNamePackage "ldp") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
+  openreview-py = py-self.callPackage (byNamePackage "openreview-py") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
   usearch = py-self.callPackage (byNamePackage "usearch") { };
