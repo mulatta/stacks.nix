@@ -15,6 +15,7 @@ py-self: _py-super: {
   ankh = py-self.callPackage (byNamePackage "ankh") { };
   bioservices = py-self.callPackage (byNamePackage "bioservices") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
+  boltz = py-self.callPackage (byNamePackage "boltz") { };
   chembl-structure-pipeline = py-self.callPackage (byNamePackage "chembl-structure-pipeline") { };
   cpdb-protein = py-self.callPackage (byNamePackage "cpdb-protein") { };
   cuequivariance = py-self.callPackage (byNamePackage "cuequivariance") { };
