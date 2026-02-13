@@ -50,4 +50,5 @@ py-self: _py-super: {
   openfold = py-self.callPackage (byNamePackage "openfold") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
+  usearch = py-self.callPackage (byNamePackage "usearch") { };
 }
