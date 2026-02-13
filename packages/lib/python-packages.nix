@@ -20,6 +20,7 @@ py-self: _py-super: {
   ankh = py-self.callPackage (byNamePackage "ankh") { };
   bioservices = py-self.callPackage (byNamePackage "bioservices") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
+  cpdb-protein = py-self.callPackage (byNamePackage "cpdb-protein") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
