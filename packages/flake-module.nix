@@ -9,13 +9,11 @@ _: {
       ...
     }:
     {
-      packages = pkgs._stacksPackages;
-
-      checks =
+      packages =
         let
           # Filter out packages unavailable on the current system (wrong platform,
-          # broken, or throwing during evaluation) so CI only builds what can succeed.
-          buildable = lib.filterAttrs (
+          # broken, or throwing during evaluation).
+          available = lib.filterAttrs (
             _: pkg:
             let
               r = builtins.tryEval (
@@ -23,8 +21,13 @@ _: {
               );
             in
             r.success && r.value
-          ) self'.packages;
-          packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") buildable;
+          ) pkgs._stacksPackages;
+        in
+        available;
+
+      checks =
+        let
+          packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") self'.packages;
           devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
         in
         packages // devShells;
