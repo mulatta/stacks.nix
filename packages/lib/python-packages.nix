@@ -17,6 +17,12 @@ py-self: _py-super: {
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   chembl-structure-pipeline = py-self.callPackage (byNamePackage "chembl-structure-pipeline") { };
   cpdb-protein = py-self.callPackage (byNamePackage "cpdb-protein") { };
+  cuequivariance = py-self.callPackage (byNamePackage "cuequivariance") { };
+  cuequivariance-ops-cu12 = py-self.callPackage (byNamePackage "cuequivariance-ops-cu12") { };
+  cuequivariance-ops-torch-cu12 =
+    py-self.callPackage (byNamePackage "cuequivariance-ops-torch-cu12")
+      { };
+  cuequivariance-torch = py-self.callPackage (byNamePackage "cuequivariance-torch") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   deepspeed = py-self.callPackage (byNamePackage "deepspeed") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
