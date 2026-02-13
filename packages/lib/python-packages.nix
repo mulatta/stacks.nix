@@ -46,6 +46,7 @@ py-self: _py-super: {
   fhlmi = py-self.callPackage (byNamePackage "fhlmi") { };
   graphein = py-self.callPackage (byNamePackage "graphein") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
+  ldp = py-self.callPackage (byNamePackage "ldp") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
