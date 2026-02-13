@@ -42,6 +42,7 @@ py-self: _py-super: {
   deepspeed = py-self.callPackage (byNamePackage "deepspeed") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
+  fhaviary = py-self.callPackage (byNamePackage "fhaviary") { };
   graphein = py-self.callPackage (byNamePackage "graphein") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
