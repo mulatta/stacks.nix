@@ -3,13 +3,8 @@
 # Packages receive torch/jax/etc as parameters without knowing which version.
 {
   byNamePackage,
-  mkNvidiaWheel,
-  mkWheelPackage,
 }:
 py-self: _py-super: {
-  # -- Helper builders available via callPackage --
-  inherit mkNvidiaWheel mkWheelPackage;
-
   # -- Nixpkgs overrides --
   # line-profiler: Cython test fixture fails in sandbox (pythonRemoveTestsDir
   # deletes .pyx files before pytestCheckPhase runs)

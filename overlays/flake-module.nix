@@ -3,21 +3,15 @@
 { lib, ... }:
 let
   byNamePackage = import ../packages/lib/by-name.nix;
-  helpers = [
-    "mkNvidiaWheel"
-    "mkWheelPackage"
-  ];
+  helpers = [ ];
 in
 {
   flake.overlays.default =
     final: prev:
     let
-      mkNvidiaWheel = final.python3Packages.callPackage ../packages/lib/mk-nvidia-wheel.nix { };
-      mkWheelPackage = final.python3Packages.callPackage ../packages/lib/mk-wheel-package.nix { };
-
       # Layer 1: all package recipes
       packagesOverlay = import ../packages/lib/python-packages.nix {
-        inherit byNamePackage mkNvidiaWheel mkWheelPackage;
+        inherit byNamePackage;
       };
 
       # Auto-derive Python package names from overlay (lazy: values not evaluated)
