@@ -18,6 +18,7 @@ py-self: _py-super: {
   # -- Packages --
   alphashape = py-self.callPackage (byNamePackage "alphashape") { };
   ankh = py-self.callPackage (byNamePackage "ankh") { };
+  bioservices = py-self.callPackage (byNamePackage "bioservices") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
