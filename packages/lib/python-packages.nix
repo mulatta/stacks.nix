@@ -1,9 +1,7 @@
 # Layer 1: packages overlay
 # All Python package recipes. Framework-agnostic.
 # Packages receive torch/jax/etc as parameters without knowing which version.
-{
-  byNamePackage,
-}:
+{ byNamePackage }:
 py-self: _py-super: {
   # -- Nixpkgs overrides --
   # line-profiler: Cython test fixture fails in sandbox (pythonRemoveTestsDir
@@ -49,6 +47,11 @@ py-self: _py-super: {
   ldp = py-self.callPackage (byNamePackage "ldp") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
   openreview-py = py-self.callPackage (byNamePackage "openreview-py") { };
+  paper-qa = py-self.callPackage (byNamePackage "paper-qa") { };
+  paper-qa-docling = py-self.callPackage (byNamePackage "paper-qa-docling") { };
+  paper-qa-nemotron = py-self.callPackage (byNamePackage "paper-qa-nemotron") { };
+  paper-qa-pymupdf = py-self.callPackage (byNamePackage "paper-qa-pymupdf") { };
+  paper-qa-pypdf = py-self.callPackage (byNamePackage "paper-qa-pypdf") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   pyzotero = py-self.callPackage (byNamePackage "pyzotero") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
