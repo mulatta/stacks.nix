@@ -8,8 +8,6 @@ Nix package registry for ML, bioinformatics, and scientific computing.
 packages/by-name/xx/<name>/package.nix   # Package recipe (2-letter prefix)
 packages/lib/python-packages.nix         # Layer 1: Python package overlay registry
 packages/lib/regular-packages.nix        # Layer 1: non-Python package registry
-packages/lib/mk-nvidia-wheel.nix         # NVIDIA wheel builder
-packages/lib/mk-wheel-package.nix        # Generic wheel builder
 packages/lib/mk-cuda-env.nix             # CUDA runtime path helper
 frameworks/                              # Layer 2: framework version overrides only
 overlays/flake-module.nix                # Set composition (Layer 1 + Layer 2)
@@ -40,23 +38,19 @@ Required version == nixpkgs version?
 |------|-----------|----------|----------|
 | 1 | Same version as nixpkgs | No definition needed | numpy, scipy |
 | 2 | Different version, cheap build | Source build | jax (pure Python), typeguard |
-| 3 | Different version, expensive native build | Pre-built wheel | jaxlib, nvidia-\* |
+| 3 | Different version, expensive native build | Pre-built wheel | cuequivariance-ops-torch-cu12 |
 
 ## Builders in `packages/lib/`
 
 | Builder | Purpose | When to use |
 |---------|---------|-------------|
-| `mkNvidiaWheel` | NVIDIA wheel packages (eliminates boilerplate) | Adding `nvidia-*-cu12` packages |
-| `mkWheelPackage` | Generic Tier 3 wheel (multi-platform) | Adding Tier 3 packages like jaxlib, docling-parse |
 | `mkCudaEnv` | CUDA runtime paths (LD\_LIBRARY\_PATH, etc.) | GPU wrapper apps or devShells needing CUDA paths |
 
-Tier 3 packages separate platform hashes into `hashes.json`:
-
-```
-packages/by-name/ja/jaxlib/
-├── package.nix      # calls mkWheelPackage
-└── hashes.json      # { "version": "...", "platforms": { "3.12-x86_64-linux": "sha256-..." } }
-```
+Tier 3 packages use `buildPythonPackage { format = "wheel"; }` directly with
+a `wheelPlatforms` attrset for platform dispatch. See
+`packages/by-name/cu/cuequivariance-ops-torch-cu12/package.nix` for the
+cpXX (Python-version-specific) pattern and `cuequivariance-ops-cu12/package.nix`
+for the py3-none (Python-version-independent) pattern.
 
 ## 2-Layer Overlay Model
 
