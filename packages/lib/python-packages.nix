@@ -22,6 +22,7 @@ py-self: _py-super: {
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   cpdb-protein = py-self.callPackage (byNamePackage "cpdb-protein") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
+  deepspeed = py-self.callPackage (byNamePackage "deepspeed") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
   graphein = py-self.callPackage (byNamePackage "graphein") { };
