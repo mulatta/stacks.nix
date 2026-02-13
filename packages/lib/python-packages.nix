@@ -24,6 +24,7 @@ py-self: _py-super: {
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
+  graphein = py-self.callPackage (byNamePackage "graphein") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
