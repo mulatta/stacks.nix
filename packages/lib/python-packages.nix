@@ -10,6 +10,20 @@ py-self: _py-super: {
   # deletes .pyx files before pytestCheckPhase runs)
   line-profiler = _py-super.line-profiler.overridePythonAttrs { doCheck = false; };
 
+  # docling-parse: nixpkgs source build broken, using wheel
+  docling-parse-bin = py-self.callPackage (byNamePackage "docling-parse-bin") { };
+  docling-parse = py-self.docling-parse-bin;
+
+  docling = _py-super.docling.overridePythonAttrs (old: {
+    pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [
+      "docling-parse"
+      "typer"
+    ];
+    meta = old.meta // {
+      inherit (py-self.docling-parse-bin.meta) platforms;
+    };
+  });
+
   # -- Packages --
   alphashape = py-self.callPackage (byNamePackage "alphashape") { };
   ankh = py-self.callPackage (byNamePackage "ankh") { };
