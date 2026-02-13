@@ -15,6 +15,7 @@ py-self: _py-super: {
   ankh = py-self.callPackage (byNamePackage "ankh") { };
   bioservices = py-self.callPackage (byNamePackage "bioservices") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
+  chembl-structure-pipeline = py-self.callPackage (byNamePackage "chembl-structure-pipeline") { };
   cpdb-protein = py-self.callPackage (byNamePackage "cpdb-protein") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   deepspeed = py-self.callPackage (byNamePackage "deepspeed") { };
