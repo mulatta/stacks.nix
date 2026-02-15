@@ -15,14 +15,14 @@
 }:
 buildPythonPackage (finalAttrs: {
   pname = "semanticscholar";
-  version = "0.12.0";
+  version = "0.12.1";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "mulatta";
     repo = "semanticscholar";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-n5BRoFii1ZEqkec9yMY4iNEJPeGF7OqT158X+1s/ToI=";
+    hash = "sha256-h5cIKuF+1s2MlmZ90d7Ch5YKvc/9nmyh4T/lSa3ADf8=";
   };
 
   # Remove nix/ directory so setuptools auto-discovery
