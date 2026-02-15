@@ -38,11 +38,13 @@ buildPythonPackage (finalAttrs: {
 
   pythonImportsCheck = [ "easydev" ];
 
+  # Tests require network access and additional test dependencies
   doCheck = false;
 
   meta = {
     description = "Common utilities to ease Python package development";
     homepage = "https://github.com/cokelaer/easydev";
     license = lib.licenses.bsd3;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 })

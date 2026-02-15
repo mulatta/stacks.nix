@@ -30,11 +30,13 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "playwright_stealth" ];
 
+  # Tests require browser runtime
   doCheck = false;
 
   meta = {
     description = "Makes Playwright stealthy like a ninja";
     homepage = "https://github.com/tinyfish-io/tf-playwright-stealth";
     license = lib.licenses.mit;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }

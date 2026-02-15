@@ -99,6 +99,7 @@ buildPythonPackage {
     wandb
   ];
 
+  # Tests require CUDA GPU
   doCheck = false;
 
   pythonImportsCheck = [ "openfold" ];

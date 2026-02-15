@@ -44,11 +44,13 @@ buildPythonPackage (finalAttrs: {
 
   pythonImportsCheck = [ "alphashape" ];
 
+  # Tests require additional test dependencies not packaged
   doCheck = false;
 
   meta = {
     description = "Toolbox for generating n-dimensional alpha shapes";
     homepage = "https://github.com/bellockk/alphashape";
     license = lib.licenses.mit;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 })

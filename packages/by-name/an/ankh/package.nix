@@ -40,6 +40,7 @@ buildPythonPackage {
     "sentencepiece"
   ];
 
+  # Tests require model weights and GPU
   doCheck = false;
 
   pythonImportsCheck = [ "ankh" ];

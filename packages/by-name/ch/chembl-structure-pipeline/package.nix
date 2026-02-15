@@ -5,14 +5,14 @@
   setuptools,
   rdkit,
 }:
-buildPythonPackage rec {
+buildPythonPackage (finalAttrs: {
   pname = "chembl-structure-pipeline";
   version = "1.2.2";
   pyproject = true;
 
   src = fetchPypi {
     pname = "chembl_structure_pipeline";
-    inherit version;
+    inherit (finalAttrs) version;
     hash = "sha256-Yl/8JfhtfW/htFmjgbKlL7HfX+DIu/6cYV6Lf3XDAcg=";
   };
 
@@ -33,5 +33,6 @@ buildPythonPackage rec {
     description = "ChEMBL protocols used to standardise and salt strip molecules";
     homepage = "https://www.ebi.ac.uk/chembl/";
     license = lib.licenses.mit;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})
