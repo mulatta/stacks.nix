@@ -22,6 +22,12 @@ py-self: _py-super: {
     };
   });
 
+  # torch: fix UB (reserve→resize) causing SIGTRAP on aarch64-darwin MPS
+  # Remove after nixpkgs PR #489817 is merged
+  torch = _py-super.torch.overridePythonAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ ./patches/torch-reserve-ub.patch ];
+  });
+
   # -- Packages --
   alphashape = py-self.callPackage (byNamePackage "alphashape") { };
   ankh = py-self.callPackage (byNamePackage "ankh") { };
