@@ -7,6 +7,7 @@
 {
   density-clustering-wasm = pkgs.callPackage (byNamePackage "density-clustering-wasm") { };
   duckdb-wasm-extensions = pkgs.callPackage (byNamePackage "duckdb-wasm-extensions") { };
+  embedding-atlas-frontend = pkgs.callPackage (byNamePackage "embedding-atlas-frontend") { };
   edirect = pkgs.callPackage (byNamePackage "edirect") { };
   foldseek = pkgs.callPackage (byNamePackage "foldseek") { };
   kalign2 = pkgs.callPackage (byNamePackage "kalign2") { };
