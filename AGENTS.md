@@ -57,7 +57,6 @@ Examples: `cuequivariance-ops-torch-cu12` (cpXX), `cuequivariance-ops-cu12` (py3
 
 ## Overlay
 
-- Layer 1 (`python-packages.nix`): framework-agnostic recipes + nixpkgs bug-fix overrides
-- Layer 2 (`frameworks/`): framework version overrides only (no bug fixes)
+- `python-packages.nix`: package recipes + nixpkgs bug-fix overrides
+- `regular-packages.nix`: non-Python packages
 - Temporary patches → `packages/lib/patches/`, comment upstream PR reference
-- Do not modify `frameworks/` when adding regular packages

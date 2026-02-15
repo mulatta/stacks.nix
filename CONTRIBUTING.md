@@ -6,12 +6,10 @@ Nix package registry for ML, bioinformatics, and scientific computing.
 
 ```
 packages/by-name/xx/<name>/package.nix   # Package recipe (2-letter prefix)
-packages/lib/python-packages.nix         # Layer 1: Python package overlay registry
-packages/lib/regular-packages.nix        # Layer 1: non-Python package registry
+packages/lib/python-packages.nix         # Python package overlay registry
+packages/lib/regular-packages.nix        # non-Python package registry
 packages/lib/patches/                     # Temporary nixpkgs bug-fix patches
-packages/lib/mk-cuda-env.nix             # CUDA runtime path helper
-frameworks/                              # Layer 2: framework version overrides only
-overlays/flake-module.nix                # Set composition (Layer 1 + Layer 2)
+overlays/flake-module.nix                # Overlay composition
 ```
 
 ## Adding a Package
@@ -41,36 +39,17 @@ Required version == nixpkgs version?
 | 2 | Different version, cheap build | Source build | jax (pure Python), typeguard |
 | 3 | Different version, expensive native build | Pre-built wheel | cuequivariance-ops-torch-cu12 |
 
-## Builders in `packages/lib/`
-
-| Builder | Purpose | When to use |
-|---------|---------|-------------|
-| `mkCudaEnv` | CUDA runtime paths (LD\_LIBRARY\_PATH, etc.) | GPU wrapper apps or devShells needing CUDA paths |
-
 Tier 3 packages use `buildPythonPackage { format = "wheel"; }` directly with
 a `wheelPlatforms` attrset for platform dispatch. See
 `packages/by-name/cu/cuequivariance-ops-torch-cu12/package.nix` for the
 cpXX (Python-version-specific) pattern and `cuequivariance-ops-cu12/package.nix`
 for the py3-none (Python-version-independent) pattern.
 
-## 2-Layer Overlay Model
+## Overlay Model
 
-- **Layer 1** (`python-packages.nix`): All package recipes and nixpkgs bug-fix overrides. Framework-agnostic — recipes take `torch`, `jax`, etc. as parameters without specifying versions. Temporary patches go in `packages/lib/patches/` with a comment referencing the upstream PR.
-- **Layer 2** (`frameworks/`): Framework **version** overrides only. No package recipes, no bug fixes.
-
-A "set" is the composition of Layer 1 + a specific Layer 2 overlay:
-
-```
-packages overlay ─── all package recipes (defined once)
-     │
-     ├── + torch-latest overlay   = torch-latest set
-     ├── + jax-034-cuda overlay   = jax-034-cuda set
-     └── + (nothing)              = base set (nixpkgs defaults)
-```
-
-Every package exists in every set. The framework overlay determines which
-torch/jax version it receives. Do not modify `frameworks/` when adding
-regular packages.
+- `python-packages.nix`: All Python package recipes and nixpkgs bug-fix overrides. Recipes take `torch`, `jax`, etc. as parameters without specifying versions. Temporary patches go in `packages/lib/patches/` with a comment referencing the upstream PR.
+- `regular-packages.nix`: Non-Python packages (C/C++, Go, binaries).
+- `overlays/flake-module.nix`: Composes both registries into a single overlay.
 
 ## Recipe Rules
 
