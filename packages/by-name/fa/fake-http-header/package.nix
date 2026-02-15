@@ -20,11 +20,13 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "fake_http_header" ];
 
+  # No test suite included in source distribution
   doCheck = false;
 
   meta = {
     description = "Generate fake HTTP headers for web crawlers";
     homepage = "https://github.com/MichaelTatarski/fake-http-header";
     license = lib.licenses.mit;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }

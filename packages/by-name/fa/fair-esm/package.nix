@@ -39,6 +39,7 @@ buildPythonPackage {
     ];
   };
 
+  # Tests require model weights download
   doCheck = false;
 
   pythonImportsCheck = [ "esm" ];

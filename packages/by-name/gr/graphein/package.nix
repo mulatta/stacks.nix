@@ -105,5 +105,6 @@ buildPythonPackage (finalAttrs: {
     homepage = "https://github.com/a-r-j/graphein";
     changelog = "https://github.com/a-r-j/graphein/blob/v${finalAttrs.version}/CHANGELOG.md";
     license = lib.licenses.mit;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 })

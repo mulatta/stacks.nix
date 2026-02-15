@@ -6,14 +6,14 @@
   cuequivariance,
   torch,
 }:
-buildPythonPackage rec {
+buildPythonPackage (finalAttrs: {
   pname = "cuequivariance-torch";
   version = "0.8.1";
   pyproject = true;
 
   src = fetchPypi {
     pname = "cuequivariance_torch";
-    inherit version;
+    inherit (finalAttrs) version;
     hash = "sha256-A6kkt6TFe+2Hyj0DRSGOuAXY0uhI9fXFcZKi5Kjrw9s=";
   };
 
@@ -35,4 +35,4 @@ buildPythonPackage rec {
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
   };
-}
+})

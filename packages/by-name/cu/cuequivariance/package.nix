@@ -9,13 +9,13 @@
   scipy,
   sympy,
 }:
-buildPythonPackage rec {
+buildPythonPackage (finalAttrs: {
   pname = "cuequivariance";
   version = "0.8.1";
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
+    inherit (finalAttrs) pname version;
     hash = "sha256-85jdC2H4CJSZTvEqasfdhE49MBpUhrmf8X0AgvHiK0w=";
   };
 
@@ -40,4 +40,4 @@ buildPythonPackage rec {
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
   };
-}
+})

@@ -64,6 +64,7 @@ buildPythonPackage (
       ln -s ${lib.getExe nodejs} $SITE/driver/node
     '';
 
+    # Pre-built wheel; tests require browser runtime
     doCheck = false;
 
     pythonImportsCheck = [ "patchright" ];

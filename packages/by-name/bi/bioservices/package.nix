@@ -68,5 +68,6 @@ buildPythonPackage (finalAttrs: {
     description = "Access to biological web services programmatically";
     homepage = "https://github.com/cokelaer/bioservices";
     license = lib.licenses.gpl3Only;
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 })
