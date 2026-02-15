@@ -62,6 +62,7 @@ py-self: _py-super: {
   paper-qa-pypdf = py-self.callPackage (byNamePackage "paper-qa-pypdf") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
   pyzotero = py-self.callPackage (byNamePackage "pyzotero") { };
+  semanticscholar = py-self.callPackage (byNamePackage "semanticscholar") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
   usearch = py-self.callPackage (byNamePackage "usearch") { };
 }
