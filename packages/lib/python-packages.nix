@@ -51,6 +51,7 @@ py-self: _py-super: {
   fhlmi = py-self.callPackage (byNamePackage "fhlmi") { };
   graphein = py-self.callPackage (byNamePackage "graphein") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
+  langextract = py-self.callPackage (byNamePackage "langextract") { };
   ldp = py-self.callPackage (byNamePackage "ldp") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
   openreview-py = py-self.callPackage (byNamePackage "openreview-py") { };
