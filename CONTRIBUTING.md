@@ -8,6 +8,7 @@ Nix package registry for ML, bioinformatics, and scientific computing.
 packages/by-name/xx/<name>/package.nix   # Package recipe (2-letter prefix)
 packages/lib/python-packages.nix         # Layer 1: Python package overlay registry
 packages/lib/regular-packages.nix        # Layer 1: non-Python package registry
+packages/lib/patches/                     # Temporary nixpkgs bug-fix patches
 packages/lib/mk-cuda-env.nix             # CUDA runtime path helper
 frameworks/                              # Layer 2: framework version overrides only
 overlays/flake-module.nix                # Set composition (Layer 1 + Layer 2)
@@ -54,8 +55,8 @@ for the py3-none (Python-version-independent) pattern.
 
 ## 2-Layer Overlay Model
 
-- **Layer 1** (`python-packages.nix`): All package recipes. Framework-agnostic — recipes take `torch`, `jax`, etc. as parameters without specifying versions.
-- **Layer 2** (`frameworks/`): Framework version overrides only. No package recipes.
+- **Layer 1** (`python-packages.nix`): All package recipes and nixpkgs bug-fix overrides. Framework-agnostic — recipes take `torch`, `jax`, etc. as parameters without specifying versions. Temporary patches go in `packages/lib/patches/` with a comment referencing the upstream PR.
+- **Layer 2** (`frameworks/`): Framework **version** overrides only. No package recipes, no bug fixes.
 
 A "set" is the composition of Layer 1 + a specific Layer 2 overlay:
 
