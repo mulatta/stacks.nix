@@ -17,7 +17,7 @@
   torch,
   tqdm,
 }:
-buildPythonPackage {
+buildPythonPackage (finalAttrs: {
   pname = "deepspeed";
   version = "0.18.6";
   pyproject = true;
@@ -25,7 +25,7 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "deepspeedai";
     repo = "DeepSpeed";
-    tag = "v0.18.6";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-SejkO1kGDaYLyz8TSLWD8HuQ4+9EkQ5gBkYdvgjolnU=";
   };
 
@@ -37,7 +37,7 @@ buildPythonPackage {
 
   # Pin version string so setup.py doesn't try to run git
   postPatch = ''
-    echo '0.18.6' > build.txt
+    echo '${finalAttrs.version}' > build.txt
   '';
 
   dependencies = [
@@ -64,8 +64,8 @@ buildPythonPackage {
   meta = {
     description = "DeepSpeed: a deep learning optimization library";
     homepage = "https://github.com/deepspeedai/DeepSpeed";
-    changelog = "https://github.com/deepspeedai/DeepSpeed/releases/tag/v0.18.6";
+    changelog = "https://github.com/deepspeedai/DeepSpeed/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
   };
-}
+})

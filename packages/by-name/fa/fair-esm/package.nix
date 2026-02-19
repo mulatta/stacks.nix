@@ -10,7 +10,7 @@
   biotite,
   scipy,
 }:
-buildPythonPackage {
+buildPythonPackage (_finalAttrs: {
   pname = "fair-esm";
   version = "2.0.0-unstable-2023-06-27";
   pyproject = true;
@@ -51,4 +51,4 @@ buildPythonPackage {
     license = lib.licenses.mit;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})

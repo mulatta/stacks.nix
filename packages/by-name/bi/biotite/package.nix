@@ -13,7 +13,7 @@
   numpy,
   requests,
 }:
-buildPythonPackage {
+buildPythonPackage (finalAttrs: {
   pname = "biotite";
   version = "0.39.0";
   pyproject = true;
@@ -21,7 +21,7 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "biotite-dev";
     repo = "biotite";
-    tag = "v0.39.0";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-4kC4FYuw/HMhJI6a20N62O5nE5t4EDTli/NhrmrpuLg=";
   };
 
@@ -42,6 +42,7 @@ buildPythonPackage {
   # numpy<=2.0 constraint is overly strict; biotite works with numpy 2.x
   pythonRelaxDeps = [ "numpy" ];
 
+  # Cython extension tests fail in sandbox (missing test data files)
   doCheck = false;
 
   pythonImportsCheck = [
@@ -56,4 +57,4 @@ buildPythonPackage {
     license = lib.licenses.bsd3;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})

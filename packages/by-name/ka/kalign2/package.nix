@@ -3,7 +3,7 @@
   stdenv,
   fetchurl,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation (_finalAttrs: {
   pname = "kalign2";
   version = "2.04";
 
@@ -35,4 +35,4 @@ stdenv.mkDerivation {
     platforms = lib.platforms.linux;
     mainProgram = "kalign";
   };
-}
+})

@@ -8,7 +8,7 @@
   fake-http-header,
   urllib3,
 }:
-buildPythonPackage {
+buildPythonPackage (_finalAttrs: {
   pname = "tf-playwright-stealth";
   version = "1.2.2";
   pyproject = true;
@@ -39,4 +39,4 @@ buildPythonPackage {
     license = lib.licenses.mit;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})
