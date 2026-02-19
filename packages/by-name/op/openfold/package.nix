@@ -29,7 +29,7 @@ let
   inherit (torch) cudaCapabilities cudaPackages cudaSupport;
   inherit (cudaPackages) backendStdenv;
 in
-buildPythonPackage {
+buildPythonPackage (finalAttrs: {
   pname = "openfold";
   version = "2.2.0";
   pyproject = true;
@@ -37,7 +37,7 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "aqlaboratory";
     repo = "openfold";
-    tag = "v2.2.0";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-LXAFTfl32L22zE2iXVw5D6xBpmP366/5UjDIxKeeTtE=";
   };
 
@@ -108,8 +108,8 @@ buildPythonPackage {
     broken = !cudaSupport;
     description = "A PyTorch reimplementation of DeepMind's AlphaFold 2";
     homepage = "https://github.com/aqlaboratory/openfold";
-    changelog = "https://github.com/aqlaboratory/openfold/releases/tag/v2.2.0";
+    changelog = "https://github.com/aqlaboratory/openfold/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
   };
-}
+})

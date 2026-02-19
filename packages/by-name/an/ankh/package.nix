@@ -11,7 +11,7 @@
   torch,
   transformers,
 }:
-buildPythonPackage {
+buildPythonPackage (finalAttrs: {
   pname = "ankh";
   version = "1.10.0";
   pyproject = true;
@@ -19,7 +19,7 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "agemagician";
     repo = "Ankh";
-    tag = "v1.10.0";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-TxL2Z6HoxkYe3osMqPVyFw8rbvXZwpvW0I8Ix03NMu0=";
   };
 
@@ -48,8 +48,8 @@ buildPythonPackage {
   meta = {
     description = "Ankh: Optimized Protein Language Model";
     homepage = "https://github.com/agemagician/Ankh";
-    changelog = "https://github.com/agemagician/Ankh/releases/tag/v1.10.0";
+    changelog = "https://github.com/agemagician/Ankh/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.cc-by-nc-sa-40;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})

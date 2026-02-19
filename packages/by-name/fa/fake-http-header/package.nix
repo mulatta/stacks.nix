@@ -4,7 +4,7 @@
   fetchFromGitHub,
   setuptools,
 }:
-buildPythonPackage {
+buildPythonPackage (_finalAttrs: {
   pname = "fake-http-header";
   version = "0.3.5-unstable-2024-01-15";
   pyproject = true;
@@ -29,4 +29,4 @@ buildPythonPackage {
     license = lib.licenses.mit;
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})
