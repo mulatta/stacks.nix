@@ -78,7 +78,7 @@ buildPythonPackage (
       homepage = "https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python";
       changelog = "https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python/releases";
       license = lib.licenses.asl20;
-      platforms = lib.platforms.linux ++ lib.platforms.darwin;
+      platforms = lib.platforms.unix;
     };
   }
 )

@@ -40,6 +40,6 @@ buildPythonPackage (finalAttrs: {
     description = "Cython-accelerated protein data bank parser";
     homepage = "https://github.com/a-r-j/cpdb";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

@@ -50,6 +50,6 @@ buildPythonPackage (finalAttrs: {
     homepage = "https://github.com/agemagician/Ankh";
     changelog = "https://github.com/agemagician/Ankh/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.cc-by-nc-sa-40;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

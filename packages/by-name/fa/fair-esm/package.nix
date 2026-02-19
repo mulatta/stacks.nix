@@ -49,6 +49,6 @@ buildPythonPackage (_finalAttrs: {
     homepage = "https://github.com/facebookresearch/esm";
     changelog = "https://github.com/facebookresearch/esm/releases/tag/v2.0.0";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

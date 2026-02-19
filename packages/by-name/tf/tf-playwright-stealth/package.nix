@@ -37,6 +37,6 @@ buildPythonPackage (_finalAttrs: {
     description = "Makes Playwright stealthy like a ninja";
     homepage = "https://github.com/tinyfish-io/tf-playwright-stealth";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

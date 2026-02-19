@@ -54,6 +54,6 @@ buildPythonPackage (finalAttrs: {
     description = "Unofficial Python client library for Semantic Scholar APIs";
     homepage = "https://github.com/mulatta/semanticscholar";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

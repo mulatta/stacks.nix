@@ -27,6 +27,6 @@ buildPythonPackage (_finalAttrs: {
     description = "Generate fake HTTP headers for web crawlers";
     homepage = "https://github.com/MichaelTatarski/fake-http-header";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })
