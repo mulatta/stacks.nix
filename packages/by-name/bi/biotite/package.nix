@@ -55,6 +55,6 @@ buildPythonPackage (finalAttrs: {
     description = "A comprehensive library for computational molecular biology";
     homepage = "https://www.biotite-python.org";
     license = lib.licenses.bsd3;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

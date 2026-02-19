@@ -33,6 +33,6 @@ buildPythonPackage (finalAttrs: {
     description = "ChEMBL protocols used to standardise and salt strip molecules";
     homepage = "https://www.ebi.ac.uk/chembl/";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

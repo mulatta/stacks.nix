@@ -168,6 +168,6 @@ buildPythonPackage (finalAttrs: {
     changelog = "https://github.com/unclecode/crawl4ai/blob/v${finalAttrs.version}/CHANGELOG.md";
     license = lib.licenses.asl20;
     mainProgram = "crwl";
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })

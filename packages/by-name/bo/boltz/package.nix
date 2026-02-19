@@ -120,6 +120,6 @@ buildPythonPackage (finalAttrs: {
     changelog = "https://github.com/jwohlwend/boltz/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     # GPU inference requires Linux + CUDA, but CPU mode works on macOS
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    platforms = lib.platforms.unix;
   };
 })
