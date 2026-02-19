@@ -40,10 +40,14 @@ Required version == nixpkgs version?
 | 3 | Different version, expensive native build | Pre-built wheel | cuequivariance-ops-torch-cu12 |
 
 Tier 3 packages use `buildPythonPackage { format = "wheel"; }` directly with
-a `wheelPlatforms` attrset for platform dispatch. See
+a `wheels` attrset for platform dispatch. See
 `packages/by-name/cu/cuequivariance-ops-torch-cu12/package.nix` for the
 cpXX (Python-version-specific) pattern and `cuequivariance-ops-cu12/package.nix`
 for the py3-none (Python-version-independent) pattern.
+
+For wheels with non-standard platform tags (e.g. `manylinux1_x86_64`, `macosx_10_13_x86_64`),
+use `fetchurl` instead of `fetchPypi` since `fetchPypi` cannot express arbitrary platform strings.
+See `packages/by-name/pa/patchright/package.nix` for the `fetchurl` wheel pattern.
 
 ## Overlay Model
 
@@ -56,7 +60,10 @@ for the py3-none (Python-version-independent) pattern.
 - `pyproject = true` when possible
 - `build-system` must be explicit (do not rely on setuptools default)
 - `pythonImportsCheck` is mandatory
-- `meta.platforms` must be explicit
+- `meta.platforms` must be explicit:
+  - General Unix-compatible packages → `lib.platforms.unix`
+  - Platform-specific packages (e.g. CUDA-only) → `lib.platforms.linux`
+  - Binary/wheel packages with specific platform builds → explicit list (e.g. `builtins.attrNames srcs`)
 - `doCheck = false` must have a comment explaining why
 - Do not use `rec` — use `stdenv.mkDerivation (finalAttrs: { ... })` pattern
 - Do not redefine dependencies already available in nixpkgs
