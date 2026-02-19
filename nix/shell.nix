@@ -3,7 +3,10 @@
     { pkgs, ... }:
     {
       devShells.default = pkgs.mkShell {
-        packages = [ ];
+        packages = with pkgs; [
+          nix-update
+          gh
+        ];
       };
     };
 }
