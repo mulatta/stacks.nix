@@ -2,17 +2,17 @@
 # All Python package recipes. Framework-agnostic.
 # Packages receive torch/jax/etc as parameters without knowing which version.
 { byNamePackage }:
-py-self: _py-super: {
+py-self: py-super: {
   # -- Nixpkgs overrides --
   # line-profiler: Cython test fixture fails in sandbox (pythonRemoveTestsDir
   # deletes .pyx files before pytestCheckPhase runs)
-  line-profiler = _py-super.line-profiler.overridePythonAttrs { doCheck = false; };
+  line-profiler = py-super.line-profiler.overridePythonAttrs { doCheck = false; };
 
   # docling-parse: nixpkgs source build broken, using wheel
   docling-parse-bin = py-self.callPackage (byNamePackage "docling-parse-bin") { };
   docling-parse = py-self.docling-parse-bin;
 
-  docling = _py-super.docling.overridePythonAttrs (old: {
+  docling = py-super.docling.overridePythonAttrs (old: {
     pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [
       "docling-parse"
       "typer"
@@ -24,7 +24,7 @@ py-self: _py-super: {
 
   # torch: fix UB (reserve→resize) causing SIGTRAP on aarch64-darwin MPS
   # Remove after nixpkgs PR #489817 is merged
-  torch = _py-super.torch.overridePythonAttrs (old: {
+  torch = py-super.torch.overridePythonAttrs (old: {
     patches = (old.patches or [ ]) ++ [ ./patches/torch-reserve-ub.patch ];
   });
 
