@@ -45,11 +45,12 @@ stdenv.mkDerivation {
     runHook preInstall
     mkdir -p $out/bin
     install -Dm755 $src/datasets $out/bin/datasets
+    install -Dm755 $src/dataformat $out/bin/dataformat
     runHook postInstall
   '';
 
   meta = {
-    description = "NCBI Datasets command-line tools for downloading biological sequence data";
+    description = "NCBI Datasets command-line tools for downloading and formatting biological sequence data";
     homepage = "https://www.ncbi.nlm.nih.gov/datasets/docs/v2/";
     changelog = "https://github.com/ncbi/datasets/releases";
     license = lib.licenses.publicDomain;
