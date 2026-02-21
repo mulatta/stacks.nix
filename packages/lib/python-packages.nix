@@ -68,6 +68,7 @@ py-self: py-super: {
   pyqtree = py-self.callPackage (byNamePackage "pyqtree") { };
   pylabeladjust = py-self.callPackage (byNamePackage "pylabeladjust") { };
   pyzotero = py-self.callPackage (byNamePackage "pyzotero") { };
+  segtok = py-self.callPackage (byNamePackage "segtok") { };
   semanticscholar = py-self.callPackage (byNamePackage "semanticscholar") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
   usearch = py-self.callPackage (byNamePackage "usearch") { };
