@@ -50,6 +50,7 @@ py-self: py-super: {
   deepspeed = py-self.callPackage (byNamePackage "deepspeed") { };
   easydev = py-self.callPackage (byNamePackage "easydev") { };
   fair-esm = py-self.callPackage (byNamePackage "fair-esm") { };
+  flair = py-self.callPackage (byNamePackage "flair") { };
   fhaviary = py-self.callPackage (byNamePackage "fhaviary") { };
   fhlmi = py-self.callPackage (byNamePackage "fhlmi") { };
   graphein = py-self.callPackage (byNamePackage "graphein") { };
