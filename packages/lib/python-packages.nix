@@ -67,6 +67,7 @@ py-self: py-super: {
   pptree = py-self.callPackage (byNamePackage "pptree") { };
   pyqtree = py-self.callPackage (byNamePackage "pyqtree") { };
   pylabeladjust = py-self.callPackage (byNamePackage "pylabeladjust") { };
+  pytorch-revgrad = py-self.callPackage (byNamePackage "pytorch-revgrad") { };
   pyzotero = py-self.callPackage (byNamePackage "pyzotero") { };
   segtok = py-self.callPackage (byNamePackage "segtok") { };
   semanticscholar = py-self.callPackage (byNamePackage "semanticscholar") { };
