@@ -64,6 +64,7 @@ py-self: py-super: {
   paper-qa-pymupdf = py-self.callPackage (byNamePackage "paper-qa-pymupdf") { };
   paper-qa-pypdf = py-self.callPackage (byNamePackage "paper-qa-pypdf") { };
   patchright = py-self.callPackage (byNamePackage "patchright") { };
+  pptree = py-self.callPackage (byNamePackage "pptree") { };
   pyqtree = py-self.callPackage (byNamePackage "pyqtree") { };
   pylabeladjust = py-self.callPackage (byNamePackage "pylabeladjust") { };
   pyzotero = py-self.callPackage (byNamePackage "pyzotero") { };
