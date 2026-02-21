@@ -54,6 +54,7 @@ py-self: py-super: {
   graphein = py-self.callPackage (byNamePackage "graphein") { };
   fake-http-header = py-self.callPackage (byNamePackage "fake-http-header") { };
   langextract = py-self.callPackage (byNamePackage "langextract") { };
+  mpld3 = py-self.callPackage (byNamePackage "mpld3") { };
   ldp = py-self.callPackage (byNamePackage "ldp") { };
   openfold = py-self.callPackage (byNamePackage "openfold") { };
   openreview-py = py-self.callPackage (byNamePackage "openreview-py") { };
