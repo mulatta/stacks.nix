@@ -31,6 +31,7 @@ py-self: py-super: {
   # -- Packages --
   alphashape = py-self.callPackage (byNamePackage "alphashape") { };
   ankh = py-self.callPackage (byNamePackage "ankh") { };
+  bioc = py-self.callPackage (byNamePackage "bioc") { };
   bioservices = py-self.callPackage (byNamePackage "bioservices") { };
   biotite = py-self.callPackage (byNamePackage "biotite") { };
   boltz = py-self.callPackage (byNamePackage "boltz") { };
