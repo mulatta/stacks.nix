@@ -42,6 +42,7 @@ py-self: py-super: {
     py-self.callPackage (byNamePackage "cuequivariance-ops-torch-cu12")
       { };
   cuequivariance-torch = py-self.callPackage (byNamePackage "cuequivariance-torch") { };
+  conllu = py-self.callPackage (byNamePackage "conllu") { };
   crawl4ai = py-self.callPackage (byNamePackage "crawl4ai") { };
   embedding-atlas = py-self.callPackage (byNamePackage "embedding-atlas") { };
   datamapplot = py-self.callPackage (byNamePackage "datamapplot") { };
