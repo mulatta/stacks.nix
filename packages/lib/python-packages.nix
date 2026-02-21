@@ -72,5 +72,8 @@ py-self: py-super: {
   segtok = py-self.callPackage (byNamePackage "segtok") { };
   semanticscholar = py-self.callPackage (byNamePackage "semanticscholar") { };
   tf-playwright-stealth = py-self.callPackage (byNamePackage "tf-playwright-stealth") { };
+  transformer-smaller-training-vocab =
+    py-self.callPackage (byNamePackage "transformer-smaller-training-vocab")
+      { };
   usearch = py-self.callPackage (byNamePackage "usearch") { };
 }
