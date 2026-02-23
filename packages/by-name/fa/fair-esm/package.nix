@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   buildPythonPackage,
   fetchFromGitHub,
   # build-system
@@ -28,6 +29,20 @@ buildPythonPackage (_finalAttrs: {
     # Fix PyTorch 2.6+ compatibility (weights_only default changed to True)
     substituteInPlace esm/pretrained.py \
       --replace-fail 'map_location="cpu"' 'map_location="cpu", weights_only=False'
+  ''
+  + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    # macOS MPS support: extract.py only checks CUDA, falling back to CPU.
+    # Add MPS detection so Apple Silicon GPU is used automatically.
+    substituteInPlace scripts/extract.py \
+      --replace-fail \
+        'torch.cuda.is_available() and not args.nogpu' \
+        '(torch.cuda.is_available() or torch.backends.mps.is_available()) and not args.nogpu' \
+      --replace-fail \
+        'model = model.cuda()' \
+        'model = model.to("mps" if torch.backends.mps.is_available() else "cuda")' \
+      --replace-fail \
+        'toks = toks.to(device="cuda", non_blocking=True)' \
+        'toks = toks.to(device="mps" if torch.backends.mps.is_available() else "cuda", non_blocking=True)'
   '';
 
   dependencies = [ torch ];
@@ -49,6 +64,7 @@ buildPythonPackage (_finalAttrs: {
     homepage = "https://github.com/facebookresearch/esm";
     changelog = "https://github.com/facebookresearch/esm/releases/tag/v2.0.0";
     license = lib.licenses.mit;
+    # Library is device-agnostic; macOS MPS patched in extract.py
     platforms = lib.platforms.unix;
   };
 })
